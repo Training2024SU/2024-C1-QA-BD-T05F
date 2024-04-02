@@ -35,3 +35,18 @@ CREATE VIEW pedidos_con_almacenista AS
         Repartidores r ON pe.id_almacenista = a.id;
         
 SELECT * FROM pedidos_con_almacenista;
+
+-- productos mas vendidos
+CREATE VIEW productos_mas_vendidos AS
+SELECT 
+    p.id AS id_producto,
+    p.nombre AS nombre_producto,
+    p.marca AS marca_producto,
+    SUM(pp.cantidad) AS total_vendido
+FROM
+    Productos p
+        INNER JOIN
+    pedidos_productos pp ON p.id = pp.id_producto
+GROUP BY p.id
+ORDER BY total_vendido DESC;
+
