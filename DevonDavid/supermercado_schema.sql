@@ -68,6 +68,9 @@ CREATE TABLE IF NOT EXISTS Productos (
 
 CREATE TABLE IF NOT EXISTS Pedidos (
     id INT NOT NULL PRIMARY KEY,
+    direccion VARCHAR(50),
+    numero_tarjeta VARCHAR(20),
+    vencimiento_tarjeta DATE,
     estado VARCHAR(20),
     fecha_solicitud TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     fecha_servido TIMESTAMP,
@@ -88,6 +91,7 @@ CREATE TABLE IF NOT EXISTS pedidos_productos (
     id_pedido INT NOT NULL,
     id_producto INT NOT NULL,
     cantidad INT NOT NULL,
+    precio_unitario BIGINT NOT NULL,
     FOREIGN KEY (id_pedido)
         REFERENCES Pedidos (id),
     FOREIGN KEY (id_producto)
