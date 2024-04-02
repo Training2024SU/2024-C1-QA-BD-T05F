@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS repartidores_codigos_postales (
 
 CREATE TABLE IF NOT EXISTS almacenistas_areas (
     id_almacenista INT NOT NULL,
-    area VARCHAR(20),
+    area VARCHAR(50),
     FOREIGN KEY (id_almacenista)
         REFERENCES Almacenistas (id),
     PRIMARY KEY (id_almacenista , area)
