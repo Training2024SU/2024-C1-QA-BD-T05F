@@ -35,7 +35,7 @@ FROM
 SELECT r.*, count(p.id) as `cantidad_pedidos` FROM Repartidores r LEFT JOIN Pedidos p on p.id_repartidor = r.id;
 
 -- Listado ordenado de almacenistas que más pedidos preparan 
-SELECT a.*, count(p.id) as `cantidad_pedidos` FROM Almacenistas a LEFT JOIN Pedidos p on p.almacenista_id = a.id;
+SELECT a.*, count(p.id) as `cantidad_pedidos` FROM Almacenistas a LEFT JOIN Pedidos p on p.id_almacenista = a.id;
 
 -- Listado de pedidos cancelados
 SELECT * FROM Pedidos pe WHERE pe.estado = "Cancelado";
@@ -81,34 +81,3 @@ GROUP BY pcp.id_producto
 ORDER BY cantidad_vendidos DESC;
 
 
--- Estas queries ya no van
--- 
--- Listado de zonas con más clientes en orden
-SELECT 
-    rcp.codigo_postal, COUNT(c.id) AS `cantidad_clientes`
-FROM
-    repartidores_codigos_postales rcp
-        LEFT JOIN
-    Clientes c ON c.codigo_postal = rcp.codigo_postal
-GROUP BY rcp.codigo_postal
-ORDER BY cantidad_clientes;
-
--- Listado de clientes fuera de zona de entregas
-SELECT 
-    c.*, rcp.id_repartidor
-FROM
-    Clientes c
-        LEFT JOIN
-    repartidores_codigos_postales rcp ON c.codigo_postal = rcp.codigo_postal
-WHERE
-    rcp.codigo_postal IS NULL;
-    
--- Listado de zonas asignadas a repartidores, pero sin clientes 
-SELECT 
-    rcp.*, c.id AS `id_cliente`
-FROM
-    Clientes c
-        RIGHT JOIN
-    repartidores_codigos_postales rcp ON c.codigo_postal = rcp.codigo_postal
-WHERE
-    c.codigo_postal IS NULL;
