@@ -32,7 +32,7 @@ FROM
     Categorias c ON p.nombre_categoria = c.nombre;
     
 -- Listado ordenado de repartidores que más pedidos entregan
-SELECT r.*, count(p.id) as `cantidad_pedidos` FROM Repartidores r LEFT JOIN Pedidos p on p.repartidor_id = r.id;
+SELECT r.*, count(p.id) as `cantidad_pedidos` FROM Repartidores r LEFT JOIN Pedidos p on p.id_repartidor = r.id;
 
 -- Listado ordenado de almacenistas que más pedidos preparan 
 SELECT a.*, count(p.id) as `cantidad_pedidos` FROM Almacenistas a LEFT JOIN Pedidos p on p.almacenista_id = a.id;
