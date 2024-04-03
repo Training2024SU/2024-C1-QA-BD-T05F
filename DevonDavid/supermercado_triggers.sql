@@ -29,3 +29,34 @@ CREATE
 -- SELECT * FROM historial_precios;
 -- DELETE FROM Productos p WHERE p.id = 123;
 -- SELECT * FROM productos_archivo;
+
+
+-- -- Registrar la inserción del nuevo cliente en el historial de clientes
+CREATE TABLE IF NOT EXISTS historial_clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT,
+    fecha TIMESTAMP,
+    accion VARCHAR(100)
+) ENGINE=INNODB;
+
+DELIMITER $$
+CREATE TRIGGER after_insert_cliente
+AFTER INSERT ON Clientes
+FOR EACH ROW
+BEGIN
+    -- Registrar la inserción del nuevo cliente en el historial de clientes
+    INSERT INTO historial_clientes (id_cliente, fecha, accion)
+    VALUES (NEW.id, NOW(), 'Nuevo cliente registrado');
+    DELIMITER $$
+    
+    -- Registrar la eliminacion de un cliente en el historial de clientes
+    DELIMITER $$
+CREATE TRIGGER after_delete_cliente
+AFTER DELETE ON Clientes
+FOR EACH ROW
+BEGIN
+    -- Registrar la eliminación del cliente en el historial de clientes
+    INSERT INTO historial_clientes (id_cliente, fecha, accion)
+    VALUES (OLD.id, NOW(), 'Cliente eliminado');
+END$$
+DELIMITER ;
