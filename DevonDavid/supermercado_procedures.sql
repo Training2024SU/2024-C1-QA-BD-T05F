@@ -14,13 +14,14 @@ CREATE PROCEDURE productos_en_categoria(IN nombre_categoria VARCHAR(40))
 BEGIN
 	SELECT * FROM Productos p WHERE p.nombre_categoria = nombre_categoria;
 END $$
+DELIMITER ;
 -- Ejemplo:
-CALL productos_en_categoria("higiene") $$
+CALL productos_en_categoria("higiene");
 
 -- ---------------------------------------------
 -- Insertar un nuevo producto
 -- ---------------------------------------------
-DELIMITER //
+DELIMITER $$
 CREATE PROCEDURE insertar_producto(
 	IN id INT,
     IN nombre_producto VARCHAR(50),
@@ -36,12 +37,12 @@ CREATE PROCEDURE insertar_producto(
 BEGIN
     INSERT INTO Productos (id,nombre, marca, origen, volumen, peso, fotografia, precio, stock, nombre_categoria)
     VALUES (id,nombre_producto, marca_producto, origen_producto, volumen_producto, peso_producto, fotografia_producto, precio_producto, stock_producto, categoria_producto);
-END //
+END $$
 DELIMITER ;
+-- Ejemplo:
+-- CALL insertar_producto('12','botella de Agua','Brisa','Colombia','20ml','200g','botella_de_agua.jpg','1500','30','Bebidas');
 
-CALL insertar_producto('12','botella de Agua','Brisa','Colombia','20ml','200g','botella_de_agua.jpg','1500','30','Bebidas');
-
-DELIMITER //
+DELIMITER $$
 -- ----------------------------------------------------
 -- Detalles de pedido con importe total
 -- --------------------------------------------------
@@ -60,21 +61,20 @@ BEGIN
 	GROUP BY p.id;
 END $$
 DELIMITER ;
-
+-- Ejemplo:
 CALL pedido_con_valor(1);
 
 -- -----------------------------------------------------------
 -- eliminar producto de la tabla productos
 -- -----------------------------------------------------------
-DELIMITER //
+DELIMITER $$
 CREATE PROCEDURE eliminar_producto(
     IN id_producto INT
 )
 BEGIN
     DELETE FROM Productos
     WHERE id = id_producto;
-END //
+END $$
 DELIMITER ;
-
-CALL eliminar_producto(12);
-
+-- Ejemplo:
+-- CALL eliminar_producto(12);
