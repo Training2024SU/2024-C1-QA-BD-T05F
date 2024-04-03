@@ -18,8 +18,8 @@ PRIMARY KEY(ID)
 CREATE TABLE IF NOT EXISTS Proveedor (
     ID VARCHAR(10) NOT NULL,
     Nombre VARCHAR(40) NOT NULL,
-    Especialidad VARCHAR(20) NOT NULL,
-    Descripcion VARCHAR(40) NOT NULL,
+    Especialidad VARCHAR(40) NOT NULL,
+    Descripcion VARCHAR(60) NOT NULL,
     PRIMARY KEY (ID)
 );
 
@@ -30,26 +30,14 @@ especialidad varchar(20) NOT NULL,
 FOREIGN KEY (Id_empleado) REFERENCES Empleado (ID)
 );
 
-
-
-CREATE TABLE Habitat (
-    ID VARCHAR(10) NOT NULL,
-    Ecosistema VARCHAR(40) NOT NULL,
-    ID_empleado VARCHAR(10) NOT NULL,
-    PRIMARY KEY (ID),
-    FOREIGN KEY (ID_empleado) REFERENCES Empleado(ID)
-);
-
 CREATE TABLE IF NOT EXISTS Animales (
     ID VARCHAR(10) NOT NULL,
     Nombre VARCHAR(40) NOT NULL,
     Clasificacion VARCHAR(10) NOT NULL,
     Peso VARCHAR(10) NOT NULL,
     ID_entrenador VARCHAR(10) NOT NULL,
-    ID_habitat VARCHAR(10) NOT NULL,
     PRIMARY KEY (ID),
-    FOREIGN KEY (ID_entrenador) REFERENCES Empleado(ID),
-    FOREIGN KEY (ID_habitat) REFERENCES Habitat(ID)
+    FOREIGN KEY (ID_entrenador) REFERENCES Empleado(ID)    
 );
 
 CREATE TABLE IF NOT EXISTS Alimento (
@@ -86,6 +74,7 @@ CREATE TABLE IF NOT EXISTS Comida (
 
 CREATE TABLE IF NOT EXISTS Consulta (
 	ID VARCHAR(10) NOT NULL, 
+    Fecha Date Not null,
     ID_animal VARCHAR(10) NOT NULL,
     ID_empleado VARCHAR(10) NOT NULL,
     PRIMARY KEY (ID),
@@ -96,13 +85,19 @@ CREATE TABLE IF NOT EXISTS Consulta (
 CREATE TABLE IF NOT EXISTS Orden_de_compra (
     ID VARCHAR(10) NOT NULL,
     Fecha DATE,
-    Producto VARCHAR(10),
-    Cantidad int,
     ID_empleado VARCHAR(10),
     ID_proveedor VARCHAR(10),
     PRIMARY KEY (ID),
     FOREIGN KEY (ID_empleado) REFERENCES Empleado(ID),
     FOREIGN KEY (ID_proveedor) REFERENCES Proveedor(ID)
+);
+
+CREATE TABLE IF NOT EXISTS productos (
+	ID_orden Varchar(10),
+    ID_alimento Varchar(10),
+    Cantidad Varchar(20),
+    Foreign key (ID_orden) References Orden_de_compra(ID),
+    Foreign key (ID_alimento) References alimento(ID)    
 );
 
 CREATE TABLE IF NOT EXISTS Factura (
@@ -119,11 +114,5 @@ CREATE TABLE IF NOT EXISTS Factura (
     FOREIGN KEY (ID_orden) REFERENCES Orden_de_compra(ID)
 );
 
-Create table if not exists pedido (
-	ID_orden Varchar (10),
-    ID_alimento Varchar (10),
-    PRIMARY KEY (ID_orden,ID_alimento),
-    FOREIGN KEY (ID_orden) REFERENCES orden_de_compra(ID),
-    FOREIGN KEY (ID_alimento) REFERENCES alimento(ID)
-);
+
     
