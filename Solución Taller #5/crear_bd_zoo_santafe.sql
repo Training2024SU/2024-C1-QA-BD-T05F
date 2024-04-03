@@ -1,7 +1,7 @@
-CREATE SCHEMA `zoo_santafe` ;
+CREATE SCHEMA IF NOT EXISTS `zoo_santafe` ;
 
 -- Crear tabla alimento
-CREATE TABLE `alimento` (
+CREATE TABLE IF NOT EXISTS  `alimento` (
   `id` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `dosis` varchar(45) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE `alimento` (
 
 -- Crear tabla animal
 
-CREATE TABLE `animal` (
+CREATE TABLE IF NOT EXISTS `animal` (
   `id` varchar(30) NOT NULL,
   `id_habitat` varchar(45) NOT NULL,
   `id_dieta` varchar(45) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `animal` (
 );
 
 -- Crear tabla asear_habitat
-CREATE TABLE `asear_habitat` (
+CREATE TABLE IF NOT EXISTS `asear_habitat` (
   `habitat_id` varchar(45) NOT NULL,
   `empleado_dni` varchar(45) NOT NULL,
   PRIMARY KEY (`habitat_id`,`empleado_dni`),
@@ -38,7 +38,7 @@ CREATE TABLE `asear_habitat` (
 );
 
 -- Crear tabla consulta
-CREATE TABLE `consulta` (
+CREATE TABLE IF NOT EXISTS `consulta` (
   `id` varchar(45) NOT NULL,
   `id_animal` varchar(45) NOT NULL,
   `id_empleado` varchar(45) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE `consulta` (
 );
 
 -- Crear tabla dieta
-CREATE TABLE `dieta` (
+CREATE TABLE IF NOT EXISTS `dieta` (
   `id` varchar(45) NOT NULL,
   `id_alimento` varchar(45) NOT NULL,
   `horario` varchar(45) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `dieta` (
 );
 
 -- Crear tabla empleado
-CREATE TABLE `empleado` (
+CREATE TABLE IF NOT EXISTS `empleado` (
   `cedula` varchar(20) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE `empleado` (
 );
 
 -- Crear tabla especialidad_empleado
-CREATE TABLE `especialidad_empleado` (
+CREATE TABLE IF NOT EXISTS `especialidad_empleado` (
   `dni_empleado` varchar(45) NOT NULL,
   `especialidad` varchar(45) NOT NULL,
   PRIMARY KEY (`dni_empleado`),
@@ -86,7 +86,7 @@ CREATE TABLE `especialidad_empleado` (
 );
 
 -- Crear tabla factura
-CREATE TABLE `factura` (
+CREATE TABLE IF NOT EXISTS `factura` (
   `id` varchar(45) NOT NULL,
   `id_proveedor` varchar(45) NOT NULL,
   `fecha` date NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE `factura` (
 );
 
 -- Crear tabla habitat
-CREATE TABLE `habitat` (
+CREATE TABLE IF NOT EXISTS `habitat` (
   `id` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `ubicacion` varchar(45) NOT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE `habitat` (
 );
 
 -- Crear tabla item_de_orden
-CREATE TABLE `item_de_orden` (
+CREATE TABLE IF NOT EXISTS `item_de_orden` (
   `codigo_alimento` varchar(45) NOT NULL,
   `id_orden_compra` varchar(45) NOT NULL,
   `cantidad` varchar(45) NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE `item_de_orden` (
 );
 
 -- Crear tabla item_de_factura
-CREATE TABLE `item_factura` (
+CREATE TABLE IF NOT EXISTS `item_factura` (
   `id_alimento` varchar(45) NOT NULL,
   `id_factura` varchar(45) NOT NULL,
   `cantidad` int NOT NULL,
@@ -129,7 +129,7 @@ CREATE TABLE `item_factura` (
 );
 
 -- Crear tabla orden_de_compra
-CREATE TABLE `orden_de_compra` (
+CREATE TABLE IF NOT EXISTS `orden_de_compra` (
   `id` varchar(45) NOT NULL,
   `codigo_proveedor` varchar(45) NOT NULL,
   `cedula_empleado` varchar(45) NOT NULL,
@@ -142,7 +142,7 @@ CREATE TABLE `orden_de_compra` (
 );
 
 -- Crear tabla pago
-CREATE TABLE `pago` (
+CREATE TABLE IF NOT EXISTS `pago` (
   `id` varchar(45) NOT NULL,
   `id_factura` varchar(45) DEFAULT NULL,
   `fecha` datetime(6) NOT NULL,
@@ -152,7 +152,7 @@ CREATE TABLE `pago` (
 );
 
 -- Crear tabla peso
-CREATE TABLE `peso` (
+CREATE TABLE IF NOT EXISTS `peso` (
   `id` varchar(45) NOT NULL,
   `empleado_id` varchar(45) NOT NULL,
   `animal_id` varchar(45) NOT NULL,
@@ -166,7 +166,7 @@ CREATE TABLE `peso` (
 );
 
 -- Crear tabla proveedor
-CREATE TABLE `proveedor` (
+CREATE TABLE IF NOT EXISTS `proveedor` (
   `id` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
