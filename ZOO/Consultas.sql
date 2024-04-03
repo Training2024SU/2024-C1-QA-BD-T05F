@@ -34,20 +34,20 @@ From
 		left join
 	animales as a on al.ID_animal = a.ID;
     
--- 4 Consultar que empleado limpió el habitat y que clasificación de animales vive ahí
-Select
-	e.ID as "ID empleado",
-    e.nombre as "Nombre",
-    h.Ecosistema as "Habitat",
-    a.Clasificacion as "Clasificacion",
-    a.nombre as "Nombre"
-    
-from
-	habitat as h
-		left join
-	empleado as e on h.ID_empleado = e.ID
-		left join
-	animal as a on h.ID = a.ID_habitat;
+-- 4 Consultar los alimentos asociados a cada orden de compra
+SELECT
+	O.ID AS ID_Orden,
+    A.ID AS ID_Alimento,
+    A.Nombre AS Nombre_Alimento,
+    A.Tipo AS Tipo_Alimento,
+    A.Descripcion AS Descripcion_Alimento
+FROM 
+	Orden_de_compra O
+	INNER JOIN 
+    productos P ON O.ID = P.ID_orden
+	INNER JOIN 
+    Alimento A ON P.ID_alimento = A.ID;
+
 
 
 -- 5 Consultar la cantidad de alimento ordenada a los proveedores
