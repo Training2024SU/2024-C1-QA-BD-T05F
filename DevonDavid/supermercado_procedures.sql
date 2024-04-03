@@ -7,14 +7,15 @@ USE supermercado;
 -- DROP PROCEDURE pedido_con_valor;
 
 DELIMITER $$
-
+-- ------------------------------------------
 -- Listado de productos por categoría
+-- ------------------------------------------
 CREATE PROCEDURE productos_en_categoria(IN nombre_categoria VARCHAR(40))
 BEGIN
 	SELECT * FROM Productos p WHERE p.nombre_categoria = nombre_categoria;
 END $$
 -- Ejemplo:
-CALL productos_en_categoria("alimentos") $$
+CALL productos_en_categoria("higiene") $$
 
 -- ---------------------------------------------
 -- Insertar un nuevo producto
@@ -41,7 +42,9 @@ DELIMITER ;
 CALL insertar_producto('12','botella de Agua','Brisa','Colombia','20ml','200g','botella_de_agua.jpg','1500','30','Bebidas');
 
 DELIMITER //
+-- ----------------------------------------------------
 -- Detalles de pedido con importe total
+-- --------------------------------------------------
 CREATE PROCEDURE pedido_con_valor(IN id_pedido INT)
 BEGIN
     SELECT 
