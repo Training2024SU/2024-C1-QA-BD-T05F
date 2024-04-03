@@ -58,7 +58,7 @@ SELECT * FROM pedidos_con_almacenista pr WHERE pr.estado = "En preparación" AND
 -- Listado de pedidos ya preparados con su almacenista
 SELECT * FROM pedidos_con_almacenista pr WHERE pr.estado = "Pendiente entrega";
         
--- Clientes frequentes ordenado por valor de compra
+-- Clientes frecuentes ordenado por valor de compra
 SELECT 
     c.*,
     COUNT(pcp.id) `cantidad_pedidos`,
@@ -69,6 +69,23 @@ FROM
     pedidos_con_productos pcp ON pcp.id_cliente
 GROUP BY c.id
 ORDER BY total_comprado DESC , cantidad_pedidos DESC;
+
+-- lista de clientes ordenados de mayor a menor valor total de compra
+SELECT 
+    c.id,
+    CONCAT(c.nombres, ' ', c.apellidos) AS nombre_cliente,
+    COUNT(p.id) AS total_pedidos,
+    SUM(pp.precio_unitario * pp.cantidad) AS valor_total_compra
+FROM 
+    Clientes c
+JOIN 
+    Pedidos p ON c.id = p.id_cliente
+JOIN 
+    pedidos_productos pp ON p.id = pp.id_pedido
+GROUP BY 
+    c.id
+ORDER BY 
+    valor_total_compra DESC;
 
 -- Listado ordenado de productos más vendidos 
 SELECT 
