@@ -118,3 +118,12 @@ CREATE TABLE IF NOT EXISTS Factura (
     FOREIGN KEY (ID_proveedor) REFERENCES Proveedor(ID),
     FOREIGN KEY (ID_orden) REFERENCES Orden_de_compra(ID)
 );
+
+Create table if not exists pedido (
+	ID_orden Varchar (10),
+    ID_alimento Varchar (10),
+    PRIMARY KEY (ID_orden,ID_alimento),
+    FOREIGN KEY (ID_orden) REFERENCES orden_de_compra(ID),
+    FOREIGN KEY (ID_alimento) REFERENCES alimento(ID)
+);
+    
