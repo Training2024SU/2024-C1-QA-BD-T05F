@@ -78,3 +78,14 @@ END $$
 DELIMITER ;
 -- Ejemplo:
 -- CALL eliminar_producto(12);
+
+-- eliminar producto de la tabla productos
+DELIMITER $$
+CREATE PROCEDURE crear_almacenista_con_area (IN id INT, IN nombre VARCHAR(50), IN area VARCHAR(20))
+BEGIN
+	INSERT INTO Almacenistas VALUES (id, nombre);
+    INSERT INTO almacenistas_areas VALUES (id, area);
+END $$
+DELIMITER ;
+-- Ejemplo:
+-- CALL crear_almacenista_con_area(99, 'Pablo', 'Neveras');
