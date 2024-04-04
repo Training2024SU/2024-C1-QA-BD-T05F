@@ -1,7 +1,9 @@
 CREATE SCHEMA IF NOT EXISTS `zoo_santafe` ;
 
--- Crear tabla alimento
-CREATE TABLE IF NOT EXISTS  `alimento` (
+-- Creación de Tablas --
+
+-- Tabla: alimento --
+CREATE TABLE IF NOT EXISTS `alimento` (
   `id` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `dosis` varchar(45) NOT NULL,
@@ -9,8 +11,7 @@ CREATE TABLE IF NOT EXISTS  `alimento` (
   PRIMARY KEY (`id`)
 );
 
--- Crear tabla animal
-
+-- Tabla: animal --
 CREATE TABLE IF NOT EXISTS `animal` (
   `id` varchar(30) NOT NULL,
   `id_habitat` varchar(45) NOT NULL,
@@ -27,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `animal` (
   CONSTRAINT `id_habitat` FOREIGN KEY (`id_habitat`) REFERENCES `habitat` (`id`)
 );
 
--- Crear tabla asear_habitat
+-- Tabla: asear_habitat --
 CREATE TABLE IF NOT EXISTS `asear_habitat` (
   `habitat_id` varchar(45) NOT NULL,
   `empleado_dni` varchar(45) NOT NULL,
@@ -37,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `asear_habitat` (
   CONSTRAINT `habitat_id` FOREIGN KEY (`habitat_id`) REFERENCES `habitat` (`id`)
 );
 
--- Crear tabla consulta
+-- Tabla: consulta --
 CREATE TABLE IF NOT EXISTS `consulta` (
   `id` varchar(45) NOT NULL,
   `id_animal` varchar(45) NOT NULL,
@@ -51,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `consulta` (
   CONSTRAINT `id_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`cedula`)
 );
 
--- Crear tabla dieta
+-- Tabla: dieta --
 CREATE TABLE IF NOT EXISTS `dieta` (
   `id` varchar(45) NOT NULL,
   `id_alimento` varchar(45) NOT NULL,
@@ -63,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `dieta` (
   CONSTRAINT `id_alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimento` (`id`)
 );
 
--- Crear tabla empleado
+-- Tabla: empleado --
 CREATE TABLE IF NOT EXISTS `empleado` (
   `cedula` varchar(20) NOT NULL,
   `nombre` varchar(150) NOT NULL,
@@ -77,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   PRIMARY KEY (`cedula`)
 );
 
--- Crear tabla especialidad_empleado
+-- Tabla: especialidad_empleado --
 CREATE TABLE IF NOT EXISTS `especialidad_empleado` (
   `dni_empleado` varchar(45) NOT NULL,
   `especialidad` varchar(45) NOT NULL,
@@ -85,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `especialidad_empleado` (
   CONSTRAINT `dni_empleado` FOREIGN KEY (`dni_empleado`) REFERENCES `empleado` (`cedula`)
 );
 
--- Crear tabla factura
+-- Tabla: factura --
 CREATE TABLE IF NOT EXISTS `factura` (
   `id` varchar(45) NOT NULL,
   `id_proveedor` varchar(45) NOT NULL,
@@ -97,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `factura` (
   CONSTRAINT `id_proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id`)
 );
 
--- Crear tabla habitat
+-- Tabla: habitat --
 CREATE TABLE IF NOT EXISTS `habitat` (
   `id` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
@@ -107,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `habitat` (
   PRIMARY KEY (`id`)
 );
 
--- Crear tabla item_de_orden
+-- Tabla: item_de_orden --
 CREATE TABLE IF NOT EXISTS `item_de_orden` (
   `codigo_alimento` varchar(45) NOT NULL,
   `id_orden_compra` varchar(45) NOT NULL,
@@ -118,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `item_de_orden` (
   CONSTRAINT `id_orden_compra` FOREIGN KEY (`id_orden_compra`) REFERENCES `orden_de_compra` (`id`)
 );
 
--- Crear tabla item_de_factura
+-- Tabla: item_de_factura --
 CREATE TABLE IF NOT EXISTS `item_factura` (
   `id_alimento` varchar(45) NOT NULL,
   `id_factura` varchar(45) NOT NULL,
@@ -128,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `item_factura` (
   PRIMARY KEY (`id_alimento`,`id_factura`)
 );
 
--- Crear tabla orden_de_compra
+-- Tabla: orden_de_compra --
 CREATE TABLE IF NOT EXISTS `orden_de_compra` (
   `id` varchar(45) NOT NULL,
   `codigo_proveedor` varchar(45) NOT NULL,
@@ -141,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `orden_de_compra` (
   CONSTRAINT `codigo_proveedor` FOREIGN KEY (`codigo_proveedor`) REFERENCES `proveedor` (`id`)
 );
 
--- Crear tabla pago
+-- Tabla: pago --
 CREATE TABLE IF NOT EXISTS `pago` (
   `id` varchar(45) NOT NULL,
   `id_factura` varchar(45) DEFAULT NULL,
@@ -151,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `pago` (
   CONSTRAINT `id_factura` FOREIGN KEY (`id_factura`) REFERENCES `factura` (`id`)
 );
 
--- Crear tabla peso
+-- Tabla: peso --
 CREATE TABLE IF NOT EXISTS `peso` (
   `id` varchar(45) NOT NULL,
   `empleado_id` varchar(45) NOT NULL,
@@ -165,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `peso` (
   CONSTRAINT `empleado_id` FOREIGN KEY (`empleado_id`) REFERENCES `empleado` (`cedula`)
 );
 
--- Crear tabla proveedor
+-- Tabla: proveedor --
 CREATE TABLE IF NOT EXISTS `proveedor` (
   `id` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
