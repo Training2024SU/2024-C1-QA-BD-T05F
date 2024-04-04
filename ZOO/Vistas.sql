@@ -51,7 +51,7 @@ FROM
     Consulta C ON E.ID = C.ID_empleado
 	LEFT JOIN 
     Dieta D ON E.ID = D.ID_veterinario
-WHERE E.cargo = 'Veterinario'
+WHERE E.cargo = 'Veterinario' OR e.cargo = 'Veterinaria'
 GROUP BY E.nombre;
 
 -- ---------------------------------------------------
@@ -63,7 +63,7 @@ CREATE VIEW Facturas_Por_Pagar AS
 SELECT *
 FROM 
 	Factura
-WHERE Estado = 'Por pagar';
+WHERE Estado = 'Pendiente';
 
 -- ---------------------------------------------------
 /* Esta vista es importante para monitorear la salud y el desarrollo de las 

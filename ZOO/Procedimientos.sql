@@ -11,10 +11,11 @@ CREATE PROCEDURE AgregarDieta(
 BEGIN
     -- Insertar nueva dieta en la tabla Dieta
     INSERT INTO Dieta (Descripcion, Dosis, ID_veterinario, ID_animal, ID_alimento)
-    VALUES (descripcion_dieta, dosis_dieta, id_veterinario_dieta, id_animal_dieta, id_alimento_dieta);
+    VALUES (descripcion_dieta, dosis_dieta, ID_veterinario, ID_animal, ID_alimento);
 END//
 
 DELIMITER ;
+
 DELIMITER //
 
 CREATE PROCEDURE CrearOrdenCompra(
