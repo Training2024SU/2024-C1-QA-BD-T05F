@@ -1,0 +1,11 @@
+Una barbería desea llevar el control de sus empleados y de sus clientes así como
+
+de los servicios que se prestan. Se desea almacenar la siguiente información:
+
+Empleados: ID,cedula,Nombre, Especialidad (Masaje, Corte, Cejas, etc.)
+Clientes: Datos personales (ID,cedula,Nombre, Profesión, Teléfono, correo, edad y Dirección).
+Historial de Servicios prestados por la barbería: Un registro para saber información del servicio prestado por un empleado a un cliente, productos consumidos, duración del procedimiento y fecha.
+Citas: Fecha y Hora en la que se cita al cliente yel barberoque realizará el servicio.
+Productos vendidos por la barbería: REF, Nombre, Cantidad y Precio.
+Proveedor: los productos vendidos deben tener una fuente.
+Registro de Ventas : Si un barbero vende un producto a un cliente, termina obteniendo una “liga” ganancia
