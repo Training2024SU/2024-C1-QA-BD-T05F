@@ -16,3 +16,5 @@ Archivo [Base de datos DonPepe.pdf](./Base%20de%20datos%20DonPepe.pdf)
 [Plan de pruebas DonPepe.pdf](./Plan%20de%20pruebas%20Don%20Pepe.pdf)
 
 [Matriz de riesgos DonPepe.pdf](./Matriz%20de%20riesgos%20DonPepe.pdf)
+
+[Escenarios de prueba DonPepe.pdf](./Escenarios%20de%20prueba%20DonPepe.pdf)
