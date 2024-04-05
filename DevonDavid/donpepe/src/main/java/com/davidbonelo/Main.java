@@ -16,11 +16,27 @@ public class Main {
     public static void main(String[] args) {
         DonPepeDB.startConnection();
         dbConnection = DonPepeDB.getConnection();
+        populateClientes();
         // prueba de conexión usando solo jdbc
-        jdbcPrueba();
+//        jdbcPrueba();
         // prueba de conexión usando un ORM
 //        hibernatePrueba();
         DonPepeDB.closeConnection();
+    }
+
+
+    private static void populateClientes() {
+        String insertClienteSql = "INSERT INTO Clientes (id, cedula, nombres, apellidos, " +
+                "direccion, telefono, codigo_postal, email, contrasenia) VALUES (?, ?, ?, ?, ?, " + "?, ?, ?, ?)";
+        try {
+            PreparedStatement insertClienteStatement =
+                    dbConnection.prepareStatement(insertClienteSql);
+            CSVImporter.insertCsvIntoTable("./initData/clientes_data.csv",
+                    new ClientesPopulator(insertClienteStatement));
+            dbConnection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void jdbcPrueba() {
@@ -38,7 +54,8 @@ public class Main {
         }
     }
 
-    // a org.hibernate.SessionFactory should be created when the program starts, and closed when the program terminates.
+    // a org.hibernate.SessionFactory should be created when the program starts, and closed when
+    // the program terminates.
     // but for demonstration purposes this method handles the entire session.
     private static void hibernatePrueba() {
         SessionFactory sessionFactory;
