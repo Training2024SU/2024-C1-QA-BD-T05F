@@ -18,3 +18,8 @@ Archivo [Base de datos DonPepe.pdf](./Base%20de%20datos%20DonPepe.pdf)
 [Matriz de riesgos DonPepe.pdf](./Matriz%20de%20riesgos%20DonPepe.pdf)
 
 [Escenarios de prueba DonPepe.pdf](./Escenarios%20de%20prueba%20DonPepe.pdf)
+
+## Conexión a la base de datos con Java
+
+- Código fuente de proyecto en la carpeta: [JDBC_SUPERMERCADO/](./JDBC_SUPERMERCADO/)
+- [PDF Explicación de la conexión con java](./CONEXIÓN%20DE%20JAVA%20CON%20LA%20BASE%20DE%20DATOS%20SUPERMERCADO.pdf)
