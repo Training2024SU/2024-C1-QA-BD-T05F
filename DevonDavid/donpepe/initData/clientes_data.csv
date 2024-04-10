@@ -1,0 +1,18 @@
+id,cedula,nombres,apellidos,direccion,telefono,codigo_postal,email,contrasenia
+1,1003920497,Juan,Hernandez,"Carrera 10 #25-30",3119049820,110111,juan.hernandez@gmail.com,contraseña1
+2,1067038518,María,Consa,"Calle 20 #15-45",3223432978,220222,maria.consa@gmail.com,contraseña2
+3,1003059648,Carlos,Vertel,"Avenida 5 #8-12",3136983097,330333,carlos.vertel@gmail.com,contraseña3
+4,90549392,Dina,Martínez,"Calle 15 #30-18",3142984509,440444,dina.martinez@gmail.com,contraseña4
+5,56079368,Luis,Velazques,"Carrera 25 #12-10",3164389870,550555,luis.velazques@gmail.com,contraseña5
+6,1003048327,Laura,Perdomo,"Calle 30 #5-25",3172370976,660666,laura.perdomo@gmail.com,contraseña6
+7,96069378,Daniel,Hernández,"Avenida 10 #40-30",3175489038,770777,daniel.hernandez@gmail.com,contraseña7
+8,89308194,Natalia,Buitrago,"Carrera 20 #18-22",3194098327,880888,Natalia.buitrago@gmail.com,contraseña8
+9,902085890,Jesus,Laverde,"Calle 12 #6-14",3229295955,990999,jesus.laverde@gmail.com,contraseña9
+10,1003049382,Marta,Torres,"Avenida 35 #25-40",3001268947,001010,marta.torres@gmail.com,contraseña10
+11,1067039278,Andrés,Chaparro,"Carrera 30 #10-5",3110794738,110121,andres.chaparro@gmail.com,contraseña11
+12,29378569,Milena,Uribe,"Calle 22 #15-28",3222907895,220232,milena.uribe@gmail.com,contraseña12
+13,34509873,maria,Portillo,"Avenida 15 #20-35",3235249807,330343,maria.portillo@gmail.com,contraseña13
+14,45098072,Valentina,Arias,"Calle 8 #12-30",3240872937,440454,valentina.arias@gmail.com,contraseña14
+15,50987073,"Miguel angel",Paes,"Carrera 12 #25-15",3190347856,550565,miguel.paes@gmail.com,contraseña15
+16,1003049780,Camilo,Sandobal,"Avenida 25 #30-20",3164906738,660676,camila.sandobal@gmail.com,contraseña16
+17,982376590,Diego,Ortiz,"Calle 18 #8-40",3170478327,770787,diego.ortiz@gmail.com,contraseña17
